@@ -3,17 +3,18 @@ package com.agenda.AgendaContatoShared.enums;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 public enum TipoContato {
+
     PESSOA("Pessoa"),
     EMPRESA("Empresa");
 
-    private String texto;
+    private String valor;
 
-    TipoContato(String texto) {
-        this.texto = texto;
+    TipoContato(String valor) {
+        this.valor = valor;
     }
 
     @JsonValue  // Manda na API (JSON) -> "D", "I" ou "O"
-    public String getTexto() {
-        return texto;
+    public String getValor() {
+        return valor;
     }
 }
