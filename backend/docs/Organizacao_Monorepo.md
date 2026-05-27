@@ -6,7 +6,7 @@ herança de dependências muito bem desenhada. Caso contrário, o compilador nã
 O segredo dessa arquitetura está em criar uma **árvore genealógica** onde o projeto Raiz atua como o patriarca (gerenciando as versões globais), 
 e os subprojetos herdam diretamente dele, permitindo o reaproveitamento nativo de código sem duplicidades.
 
-[Image of Maven multi module dependency tree architecture]
+[Image of Maven multi module dependency tree architecture](diagramas/Representacao_Estrutural_do_Projeto.md)
 
 ---
 
