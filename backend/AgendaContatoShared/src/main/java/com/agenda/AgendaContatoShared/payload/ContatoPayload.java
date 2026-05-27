@@ -1,6 +1,7 @@
 package com.agenda.AgendaContatoShared.payload;
 
 import com.agenda.AgendaContatoShared.enums.TipoContato;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -9,6 +10,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Getter
@@ -38,6 +40,14 @@ public class ContatoPayload {
 
     @JsonProperty(value = "descricao")
     private String descricao;
+
+    @JsonProperty(value = "criado_em")
+    @JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss", timezone = "America/Sao_Paulo")
+    private LocalDateTime criadoEm;
+
+    @JsonProperty(value = "atualizado_em")
+    @JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss", timezone = "America/Sao_Paulo")
+    private LocalDateTime atualizadoEm;
 
     @JsonProperty("tipo_acao")
     private String tipoAcao;
