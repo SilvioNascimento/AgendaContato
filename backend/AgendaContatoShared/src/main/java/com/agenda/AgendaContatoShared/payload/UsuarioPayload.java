@@ -21,7 +21,7 @@ public class UsuarioPayload {
     private UUID id;
 
     @JsonProperty(value = "username")
-    private String nome;
+    private String username;
 
     @JsonProperty(value = "email")
     private String email;
