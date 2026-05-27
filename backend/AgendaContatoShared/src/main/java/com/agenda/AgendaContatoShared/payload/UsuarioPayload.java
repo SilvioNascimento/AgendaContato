@@ -17,7 +17,7 @@ import java.util.UUID;
 @ToString
 public class UsuarioPayload {
 
-    @JsonProperty("user_id")
+    @JsonProperty("id")
     private UUID id;
 
     @JsonProperty(value = "username")

@@ -17,7 +17,7 @@ import java.util.UUID;
 @AllArgsConstructor
 public class ContatoPayload {
 
-    @JsonProperty(value = "contato_id")
+    @JsonProperty(value = "id")
     private UUID id;
 
     @JsonProperty(value = "user_id")
