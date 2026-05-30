@@ -1,7 +1,6 @@
 package com.agenda.AgendaContatoShared.payload;
 
 import com.agenda.AgendaContatoShared.enums.TipoContato;
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
