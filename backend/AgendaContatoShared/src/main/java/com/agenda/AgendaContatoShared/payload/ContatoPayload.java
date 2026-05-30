@@ -42,11 +42,9 @@ public class ContatoPayload {
     private String descricao;
 
     @JsonProperty(value = "criado_em")
-    @JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss", timezone = "America/Sao_Paulo")
     private LocalDateTime criadoEm;
 
     @JsonProperty(value = "atualizado_em")
-    @JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss", timezone = "America/Sao_Paulo")
     private LocalDateTime atualizadoEm;
 
     @JsonProperty("tipo_acao")
