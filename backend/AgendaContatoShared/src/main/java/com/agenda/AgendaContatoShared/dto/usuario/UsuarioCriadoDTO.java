@@ -3,6 +3,7 @@ package com.agenda.AgendaContatoShared.dto.usuario;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -27,5 +28,6 @@ public class UsuarioCriadoDTO {
 
     @NotNull(message = "Campo senha não pode ser null!")
     @NotBlank(message = "Campo senha é obrigatório!")
+    @Size(min = 10, message = "A senha deve ter no mínimo 10 caracteres")
     private String senha;
 }
