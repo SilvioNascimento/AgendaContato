@@ -6,7 +6,7 @@ herança de dependências muito bem desenhada. Caso contrário, o compilador nã
 O segredo dessa arquitetura está em criar uma **árvore genealógica** onde o projeto Raiz atua como o patriarca (gerenciando as versões globais), 
 e os subprojetos herdam diretamente dele, permitindo o reaproveitamento nativo de código sem duplicidades.
 
-[Image of Maven multi module dependency tree architecture](diagramas/Representacao_Estrutural_do_Projeto.md)
+[Image of Maven multi module dependency tree architecture](../diagramas/Representacao_Estrutural_do_Projeto.md)
 
 ---
 
@@ -43,7 +43,7 @@ O arquivo `pom.xml` localizado na raiz do repositório funciona como o Maestro d
 Boot e listar quais são os módulos filhos que ele deve gerenciar.
 
 Para acessar o código maven do projeto raíz, como também os detalhes sobre ela, 
-[clique aqui](./codigos_exemplos/xml/maven_backend_raiz.md)
+[clique aqui](../codigos_exemplos/xml/maven_backend_raiz.md)
 
 ---
 
@@ -53,7 +53,7 @@ O `Shared` é uma biblioteca de classes de dados puras. Ele não possui um méto
 "pasta de contratos" importada pelos irmãos.
 
 Para acessar o código maven do shared, como também outras explicações, 
-[clique aqui](./codigos_exemplos/xml/maven_shared.md)
+[clique aqui](../codigos_exemplos/xml/maven_shared.md)
 
 ---
 
@@ -62,7 +62,7 @@ Para acessar o código maven do shared, como também outras explicações,
 Este módulo é a sua API HTTP síncrona. Ele herda as propriedades da raiz e adiciona o módulo `Shared` como se fosse uma biblioteca interna externa.
 
 Para acessar o código maven do producer, como também outras explicações,
-[clique aqui](./codigos_exemplos/xml/maven_producer.md)
+[clique aqui](../codigos_exemplos/xml/maven_producer.md)
 
 ---
 
@@ -71,4 +71,4 @@ Para acessar o código maven do producer, como também outras explicações,
 O cérebro assíncrono do projeto. Ele não abre portas HTTP, mas é o único responsável por gerenciar a conexão física com o banco de dados PostgreSQL.
 
 Para acessar o código maven do consumer, como também outras explicações, 
-[clique aqui](./codigos_exemplos/xml/maven_consumer.md)
+[clique aqui](../codigos_exemplos/xml/maven_consumer.md)
