@@ -103,4 +103,4 @@
   `@NotBlank` ou `@Enumerated` nos Payloads compartilhados sem precisar carregar os motores pesados do Hibernate ou do Spring Data JPA para dentro do
   Shared.
 
-[Voltar para o Passo 3](../../Organizacao_Monorepo.md#-passo-3-o-módulo-compartilhado-agendacontatoshared)
+[Voltar para o Passo 3](../../documentacoes/Organizacao_Monorepo.md#-passo-3-o-módulo-compartilhado-agendacontatoshared)

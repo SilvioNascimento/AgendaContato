@@ -102,4 +102,4 @@
 - **Limpeza Arquitetural:** Este arquivo foi completamente limpo de qualquer relação com banco de dados (Flyway, Driver PostgreSQL, JPA). Como a API
   atua puramente postando mensagens na fila do RabbitMQ, ela não carrega códigos de persistência pesados.
 
-[Voltar para o Passo 4](../../Organizacao_Monorepo.md#-passo-4-o-módulo-produtor-agendacontatoproducer)
+[Voltar para o Passo 4](../../documentacoes/Organizacao_Monorepo.md#-passo-4-o-módulo-produtor-agendacontatoproducer)

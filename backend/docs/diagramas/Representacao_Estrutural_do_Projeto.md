@@ -23,4 +23,4 @@ graph TD
     style Consumer fill:#7030a0,stroke:#000,stroke-width:1px,color:#fff
 ```
 
-[Voltar para o início](../Organizacao_Monorepo.md)
+[Voltar para o início](../documentacoes/Organizacao_Monorepo.md)

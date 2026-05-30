@@ -100,4 +100,4 @@
 - **Isolamento de Redes:** Como ele herda do pai mas não possui a dependência `spring-boot-starter-web`, ele não subirá um servidor web Tomcat.
   Ele rodará de forma extremamente leve no background do Docker, usando 100% do seu poder de processamento para digerir a fila do RabbitMQ.
 
-[Voltar para o Passo 5](../../Organizacao_Monorepo.md#-passo-5-o-módulo-consumidor-agendacontatoconsumer)
+[Voltar para o Passo 5](../../documentacoes/Organizacao_Monorepo.md#-passo-5-o-módulo-consumidor-agendacontatoconsumer)

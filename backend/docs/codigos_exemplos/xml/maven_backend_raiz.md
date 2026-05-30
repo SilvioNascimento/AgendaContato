@@ -35,4 +35,4 @@
 - `<modules>`: Vincula as pastas físicas ao ciclo de build. Quando você rodar mvn clean install na raiz, o Maven lerá essa lista e descobrirá sozinho a
   ordem correta de compilação (compilando quem é dependência primeiro).
 
-[Voltar para o Passo 2](../../Organizacao_Monorepo.md#-passo-2-o-projeto-raiz-backend)
+[Voltar para o Passo 2](../../documentacoes/Organizacao_Monorepo.md#-passo-2-o-projeto-raiz-backend)
