@@ -1,0 +1,76 @@
+version: '3.8' # Especifica a especificação de sintaxe de arquivo do Docker Compose.
+
+services: # Bloco de inicialização de todos os serviços de contêiner pertencentes à malha.
+  postgres-db: # Nome lógico do serviço de banco de dados relacional.
+    image: postgres:16-alpine # Baixa a imagem oficial estável do Postgres v16 construída sob Alpine Linux (ultra leve).
+    container_name: postgres-db-container # Fixa um nome legível para gerenciamento do contêiner no terminal Docker.
+    ports:
+      - "5432:5432" # Mapeia a porta física de rede local 5432 para a porta interna 5432 do contêiner.
+    environment: # Repassa as chaves secretas lidas do arquivo externo .env para variáveis internas do Postgres.
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      TZ: America/Sao_Paulo
+    volumes:
+      - pgdata:/var/lib/postgresql/data # Cria um volume persistente que impede a perda de dados ao apagar o contêiner.
+    networks:
+      - agenda-network # Acopla o banco de dados dentro de uma rede de comunicação privada e isolada.
+
+  rabbitmq-broker: # Nome lógico do serviço do Broker de Mensageria.
+    image: rabbitmq:4.3.1-management # Imagem oficial do RabbitMQ contendo a interface web administrativa ativada por padrão.
+    container_name: rabbitmq-broker-container
+    ports:
+      - "5672:5672" # Porta de transmissão de dados usando o protocolo de rede nativo AMQP das aplicações Spring.
+      - "15672:15672" # Porta HTTP dedicada à exposição do Painel Administrativo Web do RabbitMQ para monitoramento visual.
+    environment: # Autentica o acesso do painel web e das conexões de rede de filas consumindo variáveis do .env.
+      RABBITMQ_DEFAULT_USER: ${RABBITMQ_USER}
+      RABBITMQ_DEFAULT_PASS: ${RABBITMQ_PASSWORD}
+    networks:
+      - agenda-network
+
+  api-producer: # Nome do serviço do nosso back-end produtor HTTP (API).
+    build:
+      context: . # Seta a pasta raiz do monorepo como escopo global para que o Docker possa enxergar os arquivos do Shared.
+      dockerfile: ./AgendaContatoProducer/Dockerfile # Indica a localização física exata do Dockerfile deste módulo.
+    container_name: api-producer-container
+    ports:
+      - "8081:8081" # Abre a porta lógica 8081 para receber comandos HTTP do front-end React ou do Postman.
+    environment:
+      JWT_SECRET: ${JWT_SECRET} # Injeta a chave secreta de tokens na memória da aplicação Spring.
+      SPRING_RABBITMQ_HOST: rabbitmq-broker # Diz à API que o servidor do RabbitMQ atende pelo nome do próprio serviço Docker.
+      SPRING_RABBITMQ_PORT: 5672
+      SPRING_RABBITMQ_USERNAME: ${RABBITMQ_USER}
+      SPRING_RABBITMQ_PASSWORD: ${RABBITMQ_PASSWORD}
+      TZ: America/Sao_Paulo
+    depends_on:
+      - rabbitmq-broker # Bloqueia a subida da API até que o servidor de filas esteja totalmente pronto para aceitar dados.
+    networks:
+      - agenda-network
+
+  worker-consumer: # Nome do serviço do nosso processador assíncrono de fundo.
+    build:
+      context: .
+      dockerfile: ./AgendaContatoConsumer/Dockerfile
+    container_name: worker-consumer-container
+    environment:
+      SPRING_DATASOURCE_URL: ${POSTGRES_DATASOURCE_URL} # Aponta a conexão de dados para o container do Postgres.
+      SPRING_DATASOURCE_USERNAME: ${POSTGRES_USER}
+      SPRING_DATASOURCE_PASSWORD: ${POSTGRES_PASSWORD}
+      SPRING_RABBITMQ_HOST: rabbitmq-broker
+      SPRING_RABBITMQ_PORT: 5672
+      SPRING_RABBITMQ_USERNAME: ${RABBITMQ_USER}
+      SPRING_RABBITMQ_PASSWORD: ${RABBITMQ_PASSWORD}
+      TZ: America/Sao_Paulo
+    depends_on:
+      - postgres-db # Impede a inicialização do consumer caso o banco de dados relacional esteja offline.
+      - rabbitmq-broker # Impede a inicialização do consumer caso as filas não estejam disponíveis para escuta ativa.
+    networks:
+      - agenda-network
+
+volumes:
+  pgdata: # Instancia fisicamente o volume local em disco gerenciado nativamente pelo Docker da máquina hospedeira.
+    driver: local
+
+networks:
+  agenda-network: # Inicializa o ecossistema de redes isoladas em modo bridge (ponte isolada virtual).
+    driver: bridge
