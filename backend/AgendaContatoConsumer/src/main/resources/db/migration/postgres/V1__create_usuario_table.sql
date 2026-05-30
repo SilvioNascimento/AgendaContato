@@ -11,6 +11,6 @@ CREATE TABLE usuarios (
     criado_em       TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
     atualizado_em   TIMESTAMPTZ
 
-    CHECK (cargo IN ("ADMIN", "USUARIO"))
+    CHECK (cargo IN ('ADMIN', 'USUARIO'))
 );
 
