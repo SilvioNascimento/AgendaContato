@@ -30,7 +30,6 @@
 </project>
 ```
 
-### 🧠 O que este código faz?
 ## 🧠 O que este código faz?
 
 ### 1. Tag de Inicialização e Metadados do Maven
