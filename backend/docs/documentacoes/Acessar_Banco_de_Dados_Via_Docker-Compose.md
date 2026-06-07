@@ -152,3 +152,6 @@ Para encerrar a sessão do `psql` e voltar ao terminal normal do seu sistema ope
 ```sql
 \q
 ```
+---
+
+[Voltar para README.md](../../README.md#informações-sobre-o-projeto)
