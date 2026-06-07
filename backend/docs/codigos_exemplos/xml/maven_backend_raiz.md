@@ -114,4 +114,13 @@ de compilação automaticamente, garantindo que o ecossistema seja construído s
   e a sintaxe do Java 21 (LTS). Se você tentar rodar o build usando uma versão antiga do Java (como o Java 11 
   ou 17), o Maven bloqueará a execução para garantir a integridade técnica do projeto.
 
+---
+
+## Fontes
+
+- [Maven](https://maven.apache.org/what-is-maven.html)
+- [Spring Boot/maven-plugin](https://docs.spring.io/spring-boot/maven-plugin/index.html)
+
+---
+
 [Voltar para o Passo 2](../../documentacoes/Organizacao_Monorepo.md#-passo-2-o-projeto-raiz-backend)
