@@ -29,4 +29,4 @@ COPY --from=builder /app/AgendaContatoConsumer/target/*.jar app.jar
 # O Consumer não expõe nenhuma porta HTTP externa (web-application-type=none)
 
 # Comando de inicialização otimizado para produção
-ENTRYPOINT ["java", "-jar", "app.jar"]
+ENTRYPOINT ["java", "-XX:InitialRAMPercentage=40.0", "-XX:MaxRAMPercentage=70.0", "-XX:+ExitOnOutOfMemoryError", "-jar", "app.jar"]
