@@ -11,7 +11,6 @@ import lombok.Setter;
 import lombok.ToString;
 
 import java.time.LocalDateTime;
-import java.util.UUID;
 
 
 @Getter
@@ -20,9 +19,6 @@ import java.util.UUID;
 @AllArgsConstructor
 @ToString
 public class UsuarioPayload {
-
-    @JsonProperty("id")
-    private UUID id;
 
     @JsonProperty(value = "username")
     private String username;
