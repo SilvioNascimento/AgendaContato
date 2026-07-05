@@ -41,6 +41,12 @@ services: # Bloco de inicialização de todos os serviços de contêiner pertenc
     container_name: api-producer-container
     ports:
       - "8081:8081" # Abre a porta lógica 8081 para receber comandos HTTP do front-end React ou do Postman.
+    deploy:
+      resources:
+        limits:
+          memory: 1024M
+        reservations:
+          memory: 512M
     environment:
       JWT_SECRET: ${JWT_SECRET} # Injeta a chave secreta de tokens na memória da aplicação Spring.
       SPRING_RABBITMQ_HOST: rabbitmq-broker # Diz à API que o servidor do RabbitMQ atende pelo nome do próprio serviço Docker.
