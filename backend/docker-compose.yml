@@ -22,6 +22,12 @@ services: # Bloco de inicialização de todos os serviços de contêiner pertenc
     ports:
       - "5672:5672" # Porta de transmissão de dados usando o protocolo de rede nativo AMQP das aplicações Spring.
       - "15672:15672" # Porta HTTP dedicada à exposição do Painel Administrativo Web do RabbitMQ para monitoramento visual.
+    deploy:
+      resources:
+        limits:
+          memory: 768M  # RabbitMQ v4 com interface web ativa exige um pouco mais de RAM
+        reservations:
+          memory: 256M
     environment: # Autentica o acesso do painel web e das conexões de rede de filas consumindo variáveis do .env.
       RABBITMQ_DEFAULT_USER: ${RABBITMQ_USER}
       RABBITMQ_DEFAULT_PASS: ${RABBITMQ_PASSWORD}
