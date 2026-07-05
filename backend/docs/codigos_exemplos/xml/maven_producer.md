@@ -1,3 +1,11 @@
+# Maven Producer
+
+O maven Producer configura uma aplicação executável ativa (uma API REST).
+
+A função principal deste módulo no ecossistema é ser a porta de entrada dos dados: ele expõe os endpoints HTTP para 
+o mundo externo (como o seu front-end React), valida as requisições, aplica os filtros de segurança criptográfica (JWT) 
+e despacha as mensagens para as filas do RabbitMQ.
+
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
