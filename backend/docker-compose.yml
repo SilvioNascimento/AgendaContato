@@ -4,6 +4,8 @@ services: # Bloco de inicialização de todos os serviços de contêiner pertenc
   postgres-db: # Nome lógico do serviço de banco de dados relacional.
     image: postgres:16-alpine # Baixa a imagem oficial estável do Postgres v16 construída sob Alpine Linux (ultra leve).
     container_name: postgres-db-container # Fixa um nome legível para gerenciamento do contêiner no terminal Docker.
+    shm_size: "128mb" # Alinha a memória compartilhada do container com o buffer do Postgres
+    command: [ "postgres", "-c", "shared_buffers=128MB", "-c", "work_mem=16MB", "-c", "effective_cache_size=384MB" ]
     ports:
       - "5432:5432" # Mapeia a porta física de rede local 5432 para a porta interna 5432 do contêiner.
     deploy:
