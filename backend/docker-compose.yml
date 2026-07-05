@@ -52,6 +52,12 @@ services: # Bloco de inicialização de todos os serviços de contêiner pertenc
       context: .
       dockerfile: ./AgendaContatoConsumer/Dockerfile
     container_name: worker-consumer-container
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+        reservations:
+          memory: 256M
     environment:
       SPRING_DATASOURCE_URL: ${POSTGRES_DATASOURCE_URL} # Aponta a conexão de dados para o container do Postgres.
       SPRING_DATASOURCE_USERNAME: ${POSTGRES_USER}
