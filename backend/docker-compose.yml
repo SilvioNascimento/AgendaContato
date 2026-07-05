@@ -6,6 +6,12 @@ services: # Bloco de inicialização de todos os serviços de contêiner pertenc
     container_name: postgres-db-container # Fixa um nome legível para gerenciamento do contêiner no terminal Docker.
     ports:
       - "5432:5432" # Mapeia a porta física de rede local 5432 para a porta interna 5432 do contêiner.
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+        reservations:
+          memory: 256M
     environment: # Repassa as chaves secretas lidas do arquivo externo .env para variáveis internas do Postgres.
       POSTGRES_DB: ${POSTGRES_DB}
       POSTGRES_USER: ${POSTGRES_USER}
