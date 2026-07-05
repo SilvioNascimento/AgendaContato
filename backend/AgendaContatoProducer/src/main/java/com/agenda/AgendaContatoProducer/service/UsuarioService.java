@@ -8,7 +8,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.util.UUID;
 
 @Service
 public class UsuarioService {
@@ -26,7 +25,6 @@ public class UsuarioService {
         UsuarioPayload payload = new UsuarioPayload();
 
         // 2. Transfere os dados recebidos pelo HTTP para o Payload
-        payload.setId(UUID.randomUUID()); // ID provisório para rastreamento
         payload.setUsername(dto.getUsername());
         payload.setEmail(dto.getEmail());
         payload.setTelefone(dto.getTelefone());
