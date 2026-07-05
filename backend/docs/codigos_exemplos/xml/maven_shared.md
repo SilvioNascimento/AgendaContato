@@ -1,5 +1,9 @@
 # Maven Shared
 
+A função principal deste módulo no seu ecossistema é puramente servir de biblioteca ou contrato. Ele não é uma 
+aplicação que roda sozinha (não tem uma classe `main` ou o plugin de repackage do Spring Boot); ele guarda os DTOs, 
+Payloads e Utils que o `Producer` e o `Consumer` precisam compartilhar.
+
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
